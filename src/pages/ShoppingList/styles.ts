@@ -4,7 +4,7 @@ export const MobileContainer = styled.div`
   display: grid;
   grid-template-rows: 35vh 65vh;
   height: 100vh;
-  /* font-family: "Manrope", sans-serif; */
+  font-family: "Montserrat", sans-serif;
   padding: 0 20px;
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -44,7 +44,7 @@ export const Header = styled.div`
 
 export const Title = styled.div`
   margin-top: 22%;
-  font-family: "Montserrat", sans-serif;
+
   font-weight: bold;
   font-size: 26px;
 `;
@@ -71,7 +71,6 @@ export const TotalScore = styled.div`
   }
 
   .score {
-    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 35px;
   }
@@ -100,7 +99,7 @@ export const SearchInput = styled.div`
     border: none;
     border-radius: 8px;
     background-color: ${(props) => props.theme.white_gray};
-    font-family: "Montserrat", sans-serif;
+
     font-size: 15px;
 
     &:focus {
@@ -115,7 +114,6 @@ export const ListContainer = styled.div`
   /* padding: 10px 20px; */
 
   .title {
-    font-family: "Montserrat", sans-serif;
     font-size: 20px;
     font-weight: 600;
     margin: 20px 0 10px 0;
@@ -127,11 +125,6 @@ export const Products = styled.div`
   height: 72%;
   /* border: 1px solid black; */
   overflow: auto;
-
-  .lista {
-    display: flex;
-    flex-direction: row;
-  }
 `;
 
 export const ProductCard = styled.div`
@@ -144,6 +137,13 @@ export const ProductCard = styled.div`
   padding: 10px;
   margin-bottom: 5px;
   font-size: 16px;
+  background-color: ${(props) => props.theme.light_gray};
+
+  .btn_delete {
+    margin-left: 45px;
+    font-size: 20px;
+    color: ${(props) => props.theme.red};
+  }
 `;
 
 export const Icon = styled.div`
@@ -152,13 +152,24 @@ export const Icon = styled.div`
   justify-content: center;
   width: 40px;
   border-radius: 5px;
-  background-color: gray;
+  background-color: ${(props) => props.theme.gray};
 `;
 
 export const ProductInfos = styled.div`
-  /* display: flex;
-  flex-direction: row; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-left: 20px;
+  width: 60%;
+
+  .item_title {
+    font-weight: 600;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const AddProductButton = styled.button`

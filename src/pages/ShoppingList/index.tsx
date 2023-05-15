@@ -4,7 +4,7 @@ import { InputGroup, Input } from "@chakra-ui/react";
 
 import { Modal } from "../../components/Modal";
 
-import { FaTrash, FaWineBottle } from "react-icons/fa";
+import { FaRegTrashAlt, FaWineBottle } from "react-icons/fa";
 import { FiPlusCircle } from "react-icons/fi";
 import { IoMdSearch } from "react-icons/io";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -109,20 +109,21 @@ const ShoppingList = () => {
           <Products>
             {lista.map((item) => {
               return (
-                <div className="lista">
-                  <ProductCard>
-                    <Icon>
-                      <FaWineBottle />
-                    </Icon>
-                    <ProductInfos>
-                      <div className="name">{item.title}</div>
-                      <div className="qtd">{item.quantity}</div>
-                    </ProductInfos>
-                    {/* <button>
-                  <FaTrash />
-                </button> */}
-                  </ProductCard>
-                </div>
+                <ProductCard>
+                  <Icon>
+                    <FaWineBottle />
+                  </Icon>
+                  <ProductInfos>
+                    <div>
+                      <div className="item_title">{item.title}</div>
+                      <div className="price">R$ 29,99</div>
+                    </div>
+                    <span className="qtd">{item.quantity}</span>
+                  </ProductInfos>
+                  <button className="btn_delete">
+                    <FaRegTrashAlt />
+                  </button>
+                </ProductCard>
               );
             })}
           </Products>
@@ -133,7 +134,7 @@ const ShoppingList = () => {
         </ListContainer>
       </MobileContainer>
 
-      {/* {isModalMobileOpen && (
+      {isModalMobileOpen && (
         <Modal>
           <HeaderModal>
             <div className="title_modal">Cadastrar Produto</div>
@@ -148,7 +149,7 @@ const ShoppingList = () => {
             <button>Cadastrar</button>
           </FooterModal>
         </Modal>
-      )} */}
+      )}
     </>
   );
 };
