@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { InputLeftElement } from "@chakra-ui/input";
 import { InputGroup, Input } from "@chakra-ui/react";
 
-import { Modal } from "../../components/Modal";
+import RegisterModal from "./Modals/RegisterModal";
+import { ListContext } from "../../context/ListContext";
 
 import { FaRegTrashAlt, FaWineBottle } from "react-icons/fa";
 import { FiPlusCircle } from "react-icons/fi";
 import { IoMdSearch } from "react-icons/io";
 import { MdArrowBackIosNew } from "react-icons/md";
 
+import { formatNumberToBRLCurrency } from "../../utils/format-currency";
+
 import {
   AddProductButton,
   BackBtn,
-  ContentModal,
-  FooterModal,
   Header,
-  HeaderModal,
   Icon,
   ListContainer,
   MobileContainer,
@@ -60,6 +60,7 @@ const lista = [
 
 const ShoppingList = () => {
   const [isModalMobileOpen, setIsModalMobileOpen] = useState(false);
+  const { totalPrice } = useContext(ListContext);
 
   // const SearchItems = (array, search) => {
   //   const textFormatted = search.toLowerCase().replace(/[\u0300-\u036f]/g, "");
@@ -72,7 +73,6 @@ const ShoppingList = () => {
   // };
 
   const toggleModal = () => {
-    console.log("teste");
     setIsModalMobileOpen((prevState) => !prevState);
   };
 
@@ -89,7 +89,7 @@ const ShoppingList = () => {
         </Header>
         <TotalScore>
           <div className="title_total">Total da compra</div>
-          <div className="score">R$ 300,00</div>
+          <div className="score">{formatNumberToBRLCurrency(totalPrice)}</div>
           <button className="btn_details">
             <span>Ver detalhes</span>
             <span>{">"}</span>
@@ -134,22 +134,7 @@ const ShoppingList = () => {
         </ListContainer>
       </MobileContainer>
 
-      {isModalMobileOpen && (
-        <Modal>
-          <HeaderModal>
-            <div className="title_modal">Cadastrar Produto</div>
-          </HeaderModal>
-          <ContentModal>
-            <input type="text" placeholder="Testando" />
-            <input type="text" placeholder="Testando" />
-            <input type="text" placeholder="Testando" />
-          </ContentModal>
-          <FooterModal>
-            <button style={{ marginRight: "10px" }}>Cancelar</button>
-            <button>Cadastrar</button>
-          </FooterModal>
-        </Modal>
-      )}
+      {isModalMobileOpen && <RegisterModal setIsOpen={toggleModal} />}
     </>
   );
 };

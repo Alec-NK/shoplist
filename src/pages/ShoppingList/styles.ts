@@ -200,25 +200,3 @@ export const AddProductButton = styled.button`
     transition: 0.2s;
   }
 `;
-
-export const HeaderModal = styled.div`
-  .title_modal {
-    font-size: 20px;
-    font-weight: bold;
-  }
-`;
-
-export const ContentModal = styled.div`
-  margin-top: 15px;
-`;
-
-export const FooterModal = styled.div`
-  /* display: flex; */
-  /* margin-top: 15px; */
-
-  button {
-    background-color: gray;
-    width: 48%;
-    padding: 5px;
-  }
-`;
